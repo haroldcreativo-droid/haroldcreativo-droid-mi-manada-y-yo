@@ -27,8 +27,8 @@
 
     /* Hero Section */
     .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<img src="/imagen/manada.png" alt="Mi Manada y Yo - Imagen de la comunidad" class="hero-img">:/images/manada.png') center/cover; color: white; padding: 5rem 1rem; text-align: center; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+    .hero h1 { font-size: 2.0rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem; }
 
     /* Programas / Pilares */
     .section-title { text-align: center; margin: 3rem 0 1.5rem; font-size: 2rem; color: var(--primary); }
@@ -57,42 +57,6 @@
 
     /* Footer */
     footer { background: var(--dark); color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem; }
-    /* Hero con imagen de fondo */
-#hero {
-    background-image: url("imagen/gato1.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* Capa oscura para que el texto se lea bien */
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.45);
-    padding: 40px 60px;
-    border-radius: 12px;
-    text-align: center;
-    color: white;
-    backdrop-filter: blur(3px);
-}
-
-/* Título */
-#hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-/* Subtítulo */
-#hero p {
-    font-size: 1.3rem;
-    margin: 0;
-}
-
   </style>
 </head>
 <body>
@@ -109,13 +73,12 @@
       <a href="#donaciones" class="btn-donate">¡Haz tu Donación!</a>
     </div>
   </header>
-  <section id="hero">
-    <div class="hero-overlay">
-        <h1>Protegemos huellas, transformamos vidas</h1>
-        <p>Un refugio donde cada historia importa y cada vida cuenta.</p>
-    </div>
-</section>
- 
+
+  <section class="hero">
+    <h1>Protegemos huellas, transformamos vidas</h1>
+    <p>Dedicados al rescate de animales abandonados y al apoyo integral de personas en situación de extrema vulnerabilidad.</p>
+  </section>
+
   <section class="donation-section" id="donaciones">
     <h2 style="text-align: center; color: var(--primary); margin-bottom: 1.5rem;">Haz la Diferencia Hoy</h2>
     
