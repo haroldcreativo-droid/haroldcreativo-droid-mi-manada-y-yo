@@ -57,6 +57,42 @@
 
     /* Footer */
     footer { background: var(--dark); color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem; }
+    /* Hero con imagen de fondo */
+#hero {
+    background-image: url("imagen/gato1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Capa oscura para que el texto se lea bien */
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 40px 60px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(3px);
+}
+
+/* Título */
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Subtítulo */
+#hero p {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
   </style>
 </head>
 <body>
@@ -73,6 +109,13 @@
       <a href="#donaciones" class="btn-donate">¡Haz tu Donación!</a>
     </div>
   </header>
+  <section id="hero">
+    <div class="hero-overlay">
+        <h1>Protegemos huellas, transformamos vidas</h1>
+        <p>Un refugio donde cada historia importa y cada vida cuenta.</p>
+    </div>
+</section>
+
 
   <section class="hero">
     <h1>Protegemos huellas, transformamos vidas</h1>
