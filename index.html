@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Manada y Yo — Protección y vida</title>
+    <style>
+        :root {
+            --primary-color: #557c55;    /* Verde sabio */
+            --primary-dark: #3b573b;
+            --secondary-color: #f7f5eb;  /* Crema acogedor */
+            --accent-color: #d87040;     /* Terracota cálido */
+            --accent-hover: #c25e30;
+            --card-bg: #ffffff;
+            --text-color: #333d33;
+            --text-light: #667066;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-container h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .logo-container p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            margin: 0;
+            color: rgb(83, 174, 235);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* PORTADA PRINCIPAL / HERO BANNER */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 1.5rem;
+            overflow: hidden;
+            background-color: #1b261b;
+        }
+
+        /* FONDO DIFUMINADO PARA RELLENAR ESPACIOS SOBRANTES */
+        .hero-bg-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/imagen/fondo.png');
+            background-size: cover;
+            background-position: center top;
+            filter: blur(30px) brightness(0.4);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        /* FONDO PRINCIPAL SIN RECORTE (CONTAIN) */
+        .hero-bg-full {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/imagen/fondo.png');
+            background-size: contain; /* Garantiza que la imagen se vea 100% completa */
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        /* CAPA OSCURA DE LECTURA */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: 3;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 4;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .hero-text-content {
+            color: white;
+            padding: 1rem;
+        }
+
+        .subtitle-tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero-text-content h2 {
+            color: white;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+        }
+
+        .hero-text-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2.2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(216, 112, 64, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(216, 112, 64, 0.5);
+        }
+
+        /* SECCIONES DE CONTENIDO */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .help-box {
+            background-color: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 24px rgba(74, 112, 74, 0.08);
+        }
+
+        .help-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .help-list li {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .help-list strong {
+            color: var(--primary-dark);
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+  /* Estilos para el contenedor principal */
+  .contenedor-bloque {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 20px; /* Espaciado entre la imagen y el texto */
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  /* Estilos para la imagen */
+  .bloque-imagen {
+    flex: 1 1 300px; /* Tamaño base y capacidad de encogimiento/crecimiento */
+    max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+    height: auto; /* Mantiene la proporción de aspecto */
+    display: block;
+    border-radius: 4px;
+  }
+
+  /* Estilos para el texto */
+  .bloque-texto {
+    flex: 1 1 300px; /* Tamaño base y capacidad de encogimiento/crecimiento */
+  }
+
+    </style>                      
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <h1>Mi Manada y Yo</h1>
+                <p>Protección y vida</p>
+            </div>
+            <nav>
+                <a href="#index.html">Inicio</a>
+                <a href="#">Nuestra Misión</a>
+                <a href="#donaciones">Cómo Ayudar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero-banner">
+        <div class="hero-bg-blur"></div>
+        <div class="hero-bg-full"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <span class="subtitle-tag">Protección y vida</span>
+                <h2>Un Refugio Seguro para Quienes Más lo Necesitan</h2>
+                <p>Nos dedicamos a la protección y acogida de perros, gatos y otros animales en riesgo. Asimismo, apoyamos a personas mayores en riesgo de exclusión social y a personas con discapacidad mediante donaciones físicas, dinerarias y el apoyo de personas de buen corazón.</p>
+                <a href="#como-ayudar" class="btn-primary">Conoce Cómo Colaborar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="mision" class="container">
+        <div class="section-header">
+            <h2>Nuestra Misión</h2>
+            <p>Un espacio donde la empatía, la protección animal y la inclusión social se unen.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <h3>🐾 Protección Animal</h3>
+                <p>Acogemos y cuidamos a perros, gatos y otros animales en riesgo, garantizándoles atención médica, alimento y un entorno seguro.</p>
+            </div>
+            <div class="card">
+                <h3>🤝 Personas Mayores</h3>
+                <p>Ofrecemos compañía y apoyo a adultos mayores en riesgo de exclusión social para combatir la soledad y promover la convivencia.</p>
+            </div>
+            <div class="card">
+                <h3>🌻 Inclusión y Discapacidad</h3>
+                <p>Impulsamos la inclusión activa de personas con discapacidad mediante actividades terapéuticas y comunitarias junto a nuestros animales.</p>
+            </div>
+        </div>
+    </section>
+    <section id="mision" class="container">
+<div class="contenedor-bloque">
+                <img src="/imagen/gato1.jpg" alt="Gato en un entorno de refugio animal, con una expresión tranquila y atenta; no se aprecia texto en la imagen." class="bloque-imagen">
+    <div class="section-header bloque-texto" style="text-align: left; margin-bottom: 1rem;">
+      <h2>Acogida</h2>
+      <p>Creamos un espacio seguro y acogedor para animales en situación de vulnerabilidad, brindándoles atención veterinaria, alimento y cuidados necesarios.</p>
+    </div>
+  </div>
+  </section>
+    <section id="como-ayudar" class="container" style="padding-top: 0;">
+        <div class="help-box">
+            <div class="section-header" style="text-align: left; margin-bottom: 1rem;">
+                <h2>¿Cómo Puedes Ayudarnos?</h2>
+            </div>
+            <p>Nuestra fundación se sostiene gracias a la generosidad de personas solidarias:</p>
+            <ul class="help-list">
+                <li><strong>Donaciones Económicas:</strong> Aportaciones dinerarias para medicinas, tratamientos de veterinario y mantenimiento general.</li>
+                <li><strong>Donaciones Físicas:</strong> Alimento (pienso y latas), mantas, camitas, productos de higiene y material de cuidado.</li>
+                <li><strong>Voluntariado:</strong> Tu tiempo para pasear a los perros, ayudar en el refugio o acompañar a nuestros mayores.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Mi Manada y Yo</strong> — Protección y vida. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Manada y Yo — Protección y vida</title>
+    <style>
+        :root {
+            --primary-color: #557c55;    /* Verde sabio */
+            --primary-dark: #3b573b;
+            --secondary-color: #f7f5eb;  /* Crema acogedor */
+            --accent-color: #d87040;     /* Terracota cálido */
+            --accent-hover: #c25e30;
+            --card-bg: #ffffff;
+            --text-color: #333d33;
+            --text-light: #667066;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-container h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-container p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- SECCIÓN SLIDER / CARRUSEL --- */
+        .slider-section {
+            position: relative;
+            width: 100%;
+            max-width: 1920px;
+            height: 1080px;
+            max-height: 85vh;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: #1a251a;
+        }
+
+        /* Contenedor de las diapositivas */
+        .slides-wrapper {
+            display: flex;
+            width: 300%; /* 100% por cada diapositiva (3 imágenes) */
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            position: relative;
+            width: 100vw;
+            max-width: 1920px;
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fondos de cada Slide */
+        .slide-1 {
+            background-image: url(/imagen/fondo.png);
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .slide-2 {
+            background-image: url(/imagen/manada.png); /* Cambiar por tu imagen */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-3 {
+            background-image: url(/imagen/IMG-20250407-WA0006.jpg); /* Cambiar por tu imagen */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Capa oscura para legibilidad del texto */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .subtitle-tag {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .slide-content h2 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+        }
+
+        .slide-content p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2.2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(216, 112, 64, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Flechas de Navegación */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* Puntos Indicadores */
+        .slider-dots {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+            width: 32px;
+            border-radius: 10px;
+        }
+
+        /* SECCIONES DE CONTENIDO */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <h1>Mi Manada y Yo</h1>
+                <p>Protección y vida</p>
+            </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#galeria">Nuestra Misión</a>
+                <a href="#donaciones">Cómo Ayudar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="slider-section">
+        <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
+        <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
+
+        <div class="slides-wrapper" id="slidesWrapper">
+            
+            <div class="slide slide-1">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="subtitle-tag">Protección y vida</span>
+                    <h2>Un Refugio Seguro para Quienes Más lo Necesitan</h2>
+                    <p>Nos dedicamos a la acogida de perros, gatos y animales en riesgo, junto al apoyo de personas mayores y colectivos vulnerables.</p>
+                    <a href="#como-ayudar" class="btn-primary">Conoce Cómo Colaborar</a>
+                </div>
+            </div>
+
+            <div class="slide slide-2">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="subtitle-tag">Comunidad y Vínculo</span>
+                    <h2>Convivencia e Inclusión Social</h2>
+                    <p>Promovemos actividades terapéuticas y de acompañamiento integrando a personas mayores y voluntarios con nuestros animales.</p>
+                    <a href="#mision" class="btn-primary">Nuestra Misión</a>
+                </div>
+            </div>
+
+            <div class="slide slide-3">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="subtitle-tag">Hazte Voluntario</span>
+                    <h2>Tu Tiempo Puede Cambiar Vidas</h2>
+                    <p>Súmate a nuestro equipo de voluntariado para pasear a los perros, colaborar en el refugio o acompañar a nuestros adultos mayores.</p>
+                    <a href="#como-ayudar" class="btn-primary">Unirme Ahora</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </section>
+
+    <section id="mision" class="container">
+        <div class="cards-grid">
+            <div class="card">
+                <h3>🐾 Protección Animal</h3>
+                <p>Acogemos y cuidamos a perros, gatos y otros animales en riesgo garantizándoles un entorno seguro.</p>
+            </div>
+            <div class="card">
+                <h3>🤝 Personas Mayores</h3>
+                <p>Ofrecemos compañía y apoyo a adultos mayores para combatir la soledad y promover la convivencia.</p>
+            </div>
+            <div class="card">
+                <h3>🌻 Inclusión y Discapacidad</h3>
+                <p>Impulsamos la inclusión activa mediante actividades comunitarias junto a nuestros animales.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>Mi Manada y Yo</strong> — Protección y vida. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const wrapper = document.getElementById('slidesWrapper');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${currentSlide * 100 / totalSlides}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        // Transición automática cada 6 segundos
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }, 6000);
+    </script>
+
+</body>
+</html>

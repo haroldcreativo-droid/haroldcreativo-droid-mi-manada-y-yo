@@ -1,0 +1,168 @@
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Mi Manada y Yo  </title>
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --secondary: #0288d1;
+      --accent: #f57c00;
+      --dark: #212121;
+      --light: #f5f5f5;
+      --border: #cccccc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { line-height: 1.6; color: var(--dark); background-color: var(--light); }
+
+    /* Header & Nav */
+    header { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+    .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+    .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; }
+    .btn-donate { background: var(--accent); color: white; padding: 0.5rem 1.2rem; border-radius: 20px; text-decoration: none; font-weight: bold; }
+
+    /* Hero Section */
+    .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<img src="/imagen/manada.png" alt="Mi Manada y Yo - Imagen de la comunidad" class="hero-img">:/images/manada.png') center/cover; color: white; padding: 5rem 1rem; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+
+    /* Programas / Pilares */
+    .section-title { text-align: center; margin: 3rem 0 1.5rem; font-size: 2rem; color: var(--primary); }
+    .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; padding: 1.5rem; }
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .card h3 { color: var(--dark); margin-bottom: 0.5rem; }
+
+    /* Formulario de Donaciones */
+    .donation-section { background: white; max-width: 700px; margin: 3rem auto; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .freq-selector, .amount-selector, .payment-selector { display: flex; gap: 10px; margin-bottom: 1.5rem; }
+    
+    .btn-opt { flex: 1; padding: 0.8rem; border: 2px solid var(--border); background: white; font-weight: bold; border-radius: 6px; cursor: pointer; text-align: center; }
+    .btn-opt.active { border-color: var(--primary); background-color: #e8f5e9; color: var(--primary); }
+    
+    .custom-amount { width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 2px solid var(--border); border-radius: 6px; font-size: 1rem; }
+    
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 600; }
+    .form-group input { width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 6px; }
+
+    .btn-submit { width: 100%; background: var(--accent); color: white; padding: 1rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+    .btn-submit:hover { background: #e66900; }
+
+    #success-message { display: none; margin-top: 1rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 6px; text-align: center; font-weight: bold; }
+
+    /* Footer */
+    footer { background: var(--dark); color: white; text-align: center; padding: 2rem 1rem; margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      
+      <div class="logo"><img src="/imagen/logo_1.png" alt="Nombre de la Empresa" width="100" height="auto"> PROTECCION Y VIDA</div>
+      <ul class="nav-links">
+        <li><a href="#index">Inicio</a></li>
+        <li><a href="#social">Apoyo Social</a></li>
+        <li><a href="#donaciones">Donar</a></li>
+      </ul>
+      <a href="#donaciones" class="btn-donate">¡Haz tu Donación!</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Protegemos huellas, transformamos vidas</h1>
+    <p>Dedicados al rescate de animales abandonados y al apoyo integral de personas en situación de extrema vulnerabilidad.</p>
+  </section>
+
+  <section class="donation-section" id="donaciones">
+    <h2 style="text-align: center; color: var(--primary); margin-bottom: 1.5rem;">Haz la Diferencia Hoy</h2>
+    
+    <form id="donation-form" onsubmit="procesarDonacion(event)">
+      <label style="font-weight: bold;">Frecuencia del aporte:</label>
+      <div class="freq-selector">
+        <button type="button" class="btn-opt active" onclick="setFrecuencia(this)">Puntual</button>
+        <button type="button" class="btn-opt" onclick="setFrecuencia(this)">Mensual</button>
+      </div>
+
+      <label style="font-weight: bold;">Monto a donar (€):</label>
+      <div class="amount-selector">
+        <button type="button" class="btn-opt active" onclick="setMonto(this, 10)">10€</button>
+        <button type="button" class="btn-opt" onclick="setMonto(this, 25)">25€</button>
+        <button type="button" class="btn-opt" onclick="setMonto(this, 50)">50€</button>
+      </div>
+      <input type="number" id="monto-personalizado" class="custom-amount" placeholder="Otro monto (€)" min="1">
+
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" required placeholder="Ej. Maria García">
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" required placeholder="tuemail@ejemplo.com">
+      </div>
+
+      <label style="font-weight: bold;">Método de pago:</label>
+      <div class="payment-selector">
+        <button type="button" class="btn-opt active" onclick="setMetodo(this)">💳 Tarjeta</button>
+        <button type="button" class="btn-opt" onclick="setMetodo(this)">🟦 PayPal</button>
+        <button type="button" class="btn-opt" onclick="setMetodo(this)">🏦 Bizum / Transf.</button>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submit-btn">Completar Donación de 10€</button>
+    </form>
+
+    <div id="success-message">
+      ¡Muchas gracias por tu generosidad! Tu ayuda llega directo a quienes más lo necesitan. ❤️
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Fundación Esperanza Viva — Sin ánimo de lucro</p>
+    <p>Contacto: contacto@esperanzaviva.org | Tel: +34 900 123 456</p>
+  </footer>
+
+  <script>
+    let montoSeleccionado = 10;
+
+    function setFrecuencia(elemento) {
+      document.querySelectorAll('.freq-selector .btn-opt').forEach(btn => btn.classList.remove('active'));
+      elemento.classList.add('active');
+    }
+
+    function setMonto(elemento, valor) {
+      document.querySelectorAll('.amount-selector .btn-opt').forEach(btn => btn.classList.remove('active'));
+      elemento.classList.add('active');
+      document.getElementById('monto-personalizado').value = '';
+      montoSeleccionado = valor;
+      actualizarBoton();
+    }
+
+    document.getElementById('monto-personalizado').addEventListener('input', (e) => {
+      document.querySelectorAll('.amount-selector .btn-opt').forEach(btn => btn.classList.remove('active'));
+      montoSeleccionado = e.target.value || 0;
+      actualizarBoton();
+    });
+
+    function setMetodo(elemento) {
+      document.querySelectorAll('.payment-selector .btn-opt').forEach(btn => btn.classList.remove('active'));
+      elemento.classList.add('active');
+    }
+
+    function actualizarBoton() {
+      document.getElementById('submit-btn').innerText = `Completar Donación de ${montoSeleccionado}€`;
+    }
+
+    function procesarDonacion(event) {
+      event.preventDefault();
+      document.getElementById('donation-form').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
