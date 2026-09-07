@@ -75,102 +75,56 @@
         }
 
         /* --- SECCIÓN SLIDER / CARRUSEL --- */
-        .slider-section {
-            position: relative;
-            width: 100%;
-            max-width: 1920px;
-            height: 1080px;
-            max-height: 85vh;
-            margin: 0 auto;
-            overflow: hidden;
-            background-color: #1a251a;
-        }
+        .card-slider {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    position: relative;
+}
 
-        /* Contenedor de las diapositivas */
-        .slides-wrapper {
-            display: flex;
-            width: 300%; /* 100% por cada diapositiva (3 imágenes) */
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+.card-track {
+    display: flex;
+    gap: 20px;
+    animation: slideCards 12s infinite linear;
+}
 
-        .slide {
-            position: relative;
-            width: 100vw;
-            max-width: 1920px;
-            height: 100%;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.card-item {
+    min-width: 260px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding-bottom: 15px;
+    text-align: center;
+    overflow: hidden;
+}
 
-        /* Fondos de cada Slide */
-        .slide-1 {
-            background-image: url(/imagen/fondo.png);
-            background-size: cover;
-            background-position: center top;
-        }
+.card-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-        .slide-2 {
-            background-image: url(/imagen/manada.png); /* Cambiar por tu imagen */
-            background-size: cover;
-            background-position: center;
-        }
+.card-item h3 {
+    margin: 10px 0 5px;
+    font-size: 1.3rem;
+    color: #333;
+}
 
-        .slide-3 {
-            background-image: url(/imagen/IMG-20250407-WA0006.jpg); /* Cambiar por tu imagen */
-            background-size: cover;
-            background-position: center;
-        }
+.card-item p {
+    margin: 0 15px;
+    color: #555;
+    font-size: 1rem;
+}
 
-        /* Capa oscura para legibilidad del texto */
-        .slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
-            z-index: 1;
-        }
+@keyframes slideCards {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-280px); }
+    50% { transform: translateX(-560px); }
+    75% { transform: translateX(-840px); }
+    100% { transform: translateX(0); }
+}
 
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 850px;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-        }
-
-        .subtitle-tag {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .slide-content h2 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.8);
-        }
-
-        .slide-content p {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 2rem;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-        }
 
         .btn-primary {
             display: inline-block;
@@ -271,6 +225,48 @@
             text-align: center;
             padding: 2rem 1rem;
         }
+        /* Lightbox pantalla completa */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+    animation: fadeIn 0.4s ease;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Zoom al pasar el mouse */
+.netflix-card:hover img {
+    transform: scale(1.15);
+    transition: transform 0.3s ease;
+}
+
     </style>
 </head>
 <body>
@@ -293,45 +289,41 @@
         <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
         <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
 
-        <div class="slides-wrapper" id="slidesWrapper">
-            
-            <div class="slide slide-1">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="subtitle-tag">Protección y vida</span>
-                    <h2>Un Refugio Seguro para Quienes Más lo Necesitan</h2>
-                    <p>Nos dedicamos a la acogida de perros, gatos y animales en riesgo, junto al apoyo de personas mayores y colectivos vulnerables.</p>
-                    <a href="#como-ayudar" class="btn-primary">Conoce Cómo Colaborar</a>
-                </div>
-            </div>
+        <div class="card-slider">
+    <div class="card-track">
 
-            <div class="slide slide-2">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="subtitle-tag">Comunidad y Vínculo</span>
-                    <h2>Convivencia e Inclusión Social</h2>
-                    <p>Promovemos actividades terapéuticas y de acompañamiento integrando a personas mayores y voluntarios con nuestros animales.</p>
-                    <a href="#mision" class="btn-primary">Nuestra Misión</a>
-                </div>
-            </div>
-
-            <div class="slide slide-3">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="subtitle-tag">Hazte Voluntario</span>
-                    <h2>Tu Tiempo Puede Cambiar Vidas</h2>
-                    <p>Súmate a nuestro equipo de voluntariado para pasear a los perros, colaborar en el refugio o acompañar a nuestros adultos mayores.</p>
-                    <a href="#como-ayudar" class="btn-primary">Unirme Ahora</a>
-                </div>
-            </div>
-
+        <div class="card-item">
+            <img src="imagenes/gato1.png" alt="Gato en refugio">
+            <h3>Acogida Felina</h3>
+            <p>Gatos que reciben cuidados y cariño mientras esperan un hogar.</p>
         </div>
 
-        <div class="slider-dots">
-            <span class="dot active" onclick="goToSlide(0)"></span>
-            <span class="dot" onclick="goToSlide(1)"></span>
-            <span class="dot" onclick="goToSlide(2)"></span>
+        <div class="card-item">
+            <img src="imagenes/perro1.png" alt="Perro rescatado">
+            <h3>Rescate Canino</h3>
+            <p>Perros recuperados y protegidos tras situaciones difíciles.</p>
         </div>
+
+        <div class="card-item">
+            <img src="imagenes/conejo1.png" alt="Conejo protegido">
+            <h3>Refugio de Conejos</h3>
+            <p>Pequeños animales que reciben atención especializada.</p>
+        </div>
+
+        <div class="card-item">
+            <img src="imagenes/ave1.png" alt="Ave rehabilitada">
+            <h3>Centro de Aves</h3>
+            <p>Aves rehabilitadas y preparadas para volver a volar.</p>
+        </div>
+
+    </div>
+</div>
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+</div>
+
+
     </section>
 
     <section id="mision" class="container">
@@ -356,7 +348,7 @@
     </footer>
 
     <script>
-        const wrapper = document.getElementById('slidesWrapper');
+        const wrapper = document.getElementById('cardSlider');
         const dots = document.querySelectorAll('.dot');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -392,6 +384,36 @@
             updateSlider();
         }, 6000);
     </script>
+    <script>
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeLightbox = document.querySelector('.close-lightbox');
+
+// Abrir lightbox al hacer clic en una tarjeta
+document.querySelectorAll('.netflix-card img').forEach(img => {
+    img.addEventListener('click', () => {
+        stopAutoScroll(); // detener slider
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+    });
+});
+
+// Cerrar lightbox
+closeLightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    startAutoScroll(); // reanudar slider
+});
+
+// Cerrar al hacer clic fuera de la imagen
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+        startAutoScroll();
+    }
+});
+</script>
+
 
 </body>
 </html>
