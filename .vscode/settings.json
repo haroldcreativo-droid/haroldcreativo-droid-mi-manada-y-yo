@@ -1,3 +1,9 @@
 {
-    "code-auto-commit.autoPush": true
+    "code-auto-commit.autoPush": true,
+    "git.useCommitInputAsStashMessage": true,
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "actualizacion de la pagina en GitHub."
+        }
+    ]
 }
