@@ -16,7 +16,7 @@
             --text-light: #667066;
         }
 
-        * {
+         {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -72,59 +72,7 @@
 
         nav a:hover {
             opacity: 0.8;
-        }
-
-        /* --- SECCIÓN SLIDER / CARRUSEL --- */
-        .card-slider {
-    width: 90%;
-    max-width: 900px;
-    margin: 40px auto;
-    overflow: hidden;
-    position: relative;
-}
-
-.card-track {
-    display: flex;
-    gap: 20px;
-    animation: slideCards 12s infinite linear;
-}
-
-.card-item {
-    min-width: 260px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    padding-bottom: 15px;
-    text-align: center;
-    overflow: hidden;
-}
-
-.card-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.card-item h3 {
-    margin: 10px 0 5px;
-    font-size: 1.3rem;
-    color: #333;
-}
-
-.card-item p {
-    margin: 0 15px;
-    color: #555;
-    font-size: 1rem;
-}
-
-@keyframes slideCards {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-280px); }
-    50% { transform: translateX(-560px); }
-    75% { transform: translateX(-840px); }
-    100% { transform: translateX(0); }
-}
-
+        }    
 
         .btn-primary {
             display: inline-block;
@@ -143,128 +91,113 @@
             transform: translateY(-3px);
         }
 
-        /* Flechas de Navegación */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(5px);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
-
-        /* Puntos Indicadores */
-        .slider-dots {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: var(--accent-color);
-            width: 32px;
-            border-radius: 10px;
-        }
-
-        /* SECCIONES DE CONTENIDO */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-top: 5px solid var(--primary-color);
-        }
-
+       
         footer {
             background-color: var(--primary-dark);
             color: white;
             text-align: center;
             padding: 2rem 1rem;
         }
-        /* Lightbox pantalla completa */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
+    
+
+
+ /*================================
+   CONTENEDORES CON SOMBRA
+   ================================ */
+
+.contact-info,
+.contact-form,
+.contenedor {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ================================
+   FORMULARIO
+   ================================ */
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    background: #2a7ae4;
+    color: #fff;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #1e5fb3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(42,122,228,0.4);
+}
+ h3 {
+  text-align: center;
+  color: #557c55;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+.contact-info { 
+    text-align: center; 
+    font-size: 1.1rem; 
+    color: #333d33; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.portada-slider {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.portada-slider .slide {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
+    animation: fade 12s infinite;
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(255,255,255,0.3);
-    animation: fadeIn 0.4s ease;
+.portada-slider .slide:nth-child(1) { animation-delay: 0s; }
+.portada-slider .slide:nth-child(2) { animation-delay: 4s; }
+.portada-slider .slide:nth-child(3) { animation-delay: 8s; }
+
+.portada-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.close-lightbox {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    font-size: 3rem;
-    color: white;
-    cursor: pointer;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Zoom al pasar el mouse */
-.netflix-card:hover img {
-    transform: scale(1.15);
-    transition: transform 0.3s ease;
+@keyframes fade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
 }
 
     </style>
@@ -283,66 +216,43 @@
                 <a href="donaciones.html">Cómo Ayudar</a>
             </nav>
         </div>
+   
     </header>
-
-    <section id="inicio" class="slider-section">
-        <button class="slider-btn prev-btn" id="prevBtn">&#10094;</button>
-        <button class="slider-btn next-btn" id="nextBtn">&#10095;</button>
-
-        <div class="card-slider">
-    <div class="card-track">
-
-        <div class="card-item">
-            <img src="imagenes/gato1.png" alt="Gato en refugio">
-            <h3>Acogida Felina</h3>
-            <p>Gatos que reciben cuidados y cariño mientras esperan un hogar.</p>
-        </div>
-
-        <div class="card-item">
-            <img src="imagenes/perro1.png" alt="Perro rescatado">
-            <h3>Rescate Canino</h3>
-            <p>Perros recuperados y protegidos tras situaciones difíciles.</p>
-        </div>
-
-        <div class="card-item">
-            <img src="imagenes/conejo1.png" alt="Conejo protegido">
-            <h3>Refugio de Conejos</h3>
-            <p>Pequeños animales que reciben atención especializada.</p>
-        </div>
-
-        <div class="card-item">
-            <img src="imagenes/ave1.png" alt="Ave rehabilitada">
-            <h3>Centro de Aves</h3>
-            <p>Aves rehabilitadas y preparadas para volver a volar.</p>
-        </div>
-
-    </div>
-</div>
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" src="" alt="Imagen ampliada">
+    <div class="portada-slider">
+    <div class="slide"><img src="imagen/perro5.jpg" alt=""></div>
+    <div class="slide"><img src="imagen/manada2.png" alt=""></div>
+    <div class="slide"><img src="imagen/manada1.png" alt=""></div>
 </div>
 
+<!-- CONTENIDO -->
+<div class="contact-info">
+    <h3>Información de contacto</h3>
+    <ul>
+    <li><span class="icono">📱</span> Teléfono / WhatsApp: <a href="https://wa.me/3015717123">3015717123</a></li>
+    <li><span class="icono">📧</span> Correo: <a href="mailto:info@mimandayyo.org">info@mimandayyo.org</a></li>
+    <li><span class="icono">🌐</span> Sitio web: <a href="https://www.mimandayyo.org">www.mimandayyo.org</a></li>
+  </ul>
+</div>
 
-    </section>
+<div class="contact-form">
+    <h3>Formulario de contacto</h3>
 
-    <section id="mision" class="container">
-        <div class="cards-grid">
-            <div class="card">
-                <h3>🐾 Protección Animal</h3>
-                <p>Acogemos y cuidamos a perros, gatos y otros animales en riesgo garantizándoles un entorno seguro.</p>
-            </div>
-            <div class="card">
-                <h3>🤝 Personas Mayores</h3>
-                <p>Ofrecemos compañía y apoyo a adultos mayores para combatir la soledad y promover la convivencia.</p>
-            </div>
-            <div class="card">
-                <h3>🌻 Inclusión y Discapacidad</h3>
-                <p>Impulsamos la inclusión activa mediante actividades comunitarias junto a nuestros animales.</p>
-            </div>
-        </div>
-    </section>
+    <form action="https://formsubmit.co/info@mimandayyo.org" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="gracias.html">
 
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Mensaje:</label>
+        <textarea name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+    </form>
+</div>            
     <footer>
         <p>&copy; 2026 <strong>Mi Manada y Yo</strong> — Protección y vida. Todos los derechos reservados.</p>
     </footer>

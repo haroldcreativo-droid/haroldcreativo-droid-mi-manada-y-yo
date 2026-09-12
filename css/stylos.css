@@ -1,0 +1,159 @@
+/* ================================
+   ESTILO BASE DE LA PLANTILLA
+   ================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fafafa;
+    color: #333;
+}
+
+/* CABECERA */
+header {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-bottom: 2px solid #eee;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 5px 0 15px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* MENÚ */
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a.active {
+    color: #2a7ae4;
+}
+
+/* ================================
+   BANNER ORIGINAL DE GALERÍA
+   ================================ */
+
+.banner {
+    width: 100%;
+    height: 300px;
+    background: url('banner.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.banner-text {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* ================================
+   PORTADA / INTRO
+   ================================ */
+
+.intro {
+    background: #f5f5f5;
+    padding: 40px;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* ================================
+   CONTENEDORES CON SOMBRA
+   ================================ */
+
+.contact-info,
+.contact-form,
+.contenedor {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ================================
+   FORMULARIO
+   ================================ */
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.contact-form button {
+    margin-top: 20px;
+    background: #2a7ae4;
+    color: #fff;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #1e5fb3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(42,122,228,0.4);
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    margin-top: 40px;
+    border-top: 2px solid #eee;
+}
