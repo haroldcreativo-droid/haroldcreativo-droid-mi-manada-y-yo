@@ -16,12 +16,8 @@
             --text-light: #667066;
         }
 
-         {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+         
+            
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             color: var(--text-color);
@@ -212,7 +208,7 @@
             </div>
             <nav>
                 <a href="index.html">Inicio</a>
-                <a href="galeria.html">Nuestra Misión</a>
+                <a href="galeria.html">Galeria</a>
                 <a href="slide.html">Contacto</a>
             </nav>
         </div>
@@ -256,74 +252,9 @@
     <footer>
         <p>&copy; 2026 <strong>Mi Manada y Yo</strong> — Protección y vida. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        const wrapper = document.getElementById('cardSlider');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        let currentSlide = 0;
-        const totalSlides = 3;
-
-        function updateSlider() {
-            wrapper.style.transform = `translateX(-${currentSlide * 100 / totalSlides}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        });
-
-        // Transición automática cada 6 segundos
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        }, 6000);
-    </script>
-    <script>
-// Lightbox
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeLightbox = document.querySelector('.close-lightbox');
-
-// Abrir lightbox al hacer clic en una tarjeta
-document.querySelectorAll('.netflix-card img').forEach(img => {
-    img.addEventListener('click', () => {
-        stopAutoScroll(); // detener slider
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-    });
-});
-
-// Cerrar lightbox
-closeLightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    startAutoScroll(); // reanudar slider
-});
-
-// Cerrar al hacer clic fuera de la imagen
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-        startAutoScroll();
-    }
-});
-</script>
-
-
+      
 </body>
+
+
+
 </html>
