@@ -112,7 +112,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("imagen/portada.png");
+            background-image: url("imagen/fondo.png");
             background-size: contain; /* Garantiza que la imagen se vea 100% completa */
             background-position: center;
             background-repeat: no-repeat;
@@ -191,10 +191,17 @@
 
         /* SECCIONES DE CONTENIDO */
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem;
-        }
+           
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px auto;
+    max-width: 900px;
+    border: 1px solid #ffd7b8;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+        
 
         .section-header {
             text-align: center;
@@ -279,13 +286,37 @@
     flex: 1 1 300px; /* Tamaño base y capacidad de encogimiento/crecimiento */
   }
 .bloque-imagen {
-    width: 300px;      /* o el tamaño que quieras */
+    width: 400px;      /* o el tamaño que quieras */
     height: auto;
     display: block;
 }
 .contenedor-bloque img {
     flex-shrink: 0;
 }
+.areas-list  {
+    list-style: none;        /* Quita las viñetas */
+    padding-left: 0;         /* Evita sangrías innecesarias */
+    margin: 0;               /* Limpia el espacio exterior */
+    text-align: left; 
+}
+.areas-list li {
+    padding: 6px 0;          /* Espaciado entre ítems */
+    display: flex;           /* Permite alinear iconos y texto */
+    align-items: center;     /* Centra verticalmente */
+    gap: 8px;                /* Espacio entre icono y texto */
+    border-bottom: 1px solid #eee; /* Línea suave para orden visual */
+}
+.contenedor {
+   
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px auto;
+    max-width: 900px;
+    border: 1px solid #ffd7b8;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
 
     </style>                      
 </head>
@@ -321,8 +352,67 @@
 
     <section id="mision" class="container">
         <div class="section-header">
-            <h2>Nuestra Misión</h2>
-            <p>Un espacio donde la empatía, la protección animal y la inclusión social se unen.</p>
+            <h2>Nuestra Misiòn :</h2>
+            <p>Un espacio donde la empatía, la protección animal y la inclusión social se unen. </p>        
+ 
+<p>Fomentar, proteger y apoyar integralmente a todos los seres vivos y al medio ambiente, sin discriminación
+de ninguna índole.</p>
+<h2>Lo que hacemos: </h2>
+ <ol class="areas-list">
+        <li>
+            🐾 <strong>Protección Animal</strong> — Rescate, recuperación, atención veterinaria,
+            alimentación, refugio, esterilización y adopción responsable de cualquier especie.
+        </li>
+
+        <li>
+            🌿 <strong>Alimentos Naturales</strong> — Promoción de crianza y elaboración de alimentos
+            100% naturales.
+        </li>
+
+        <li>
+            🤝 <strong>Apoyo Integral a Personas</strong> — Atención y asistencia humanitaria sin
+            distinción de raza, etnia, credo, condición o edad.
+        </li>
+
+        <li>
+            🌍 <strong>Inclusión Social</strong> — Apoyo a poblaciones vulnerables, personas en
+            situación de desplazamiento, adultos mayores, niñez, personas con discapacidad,
+            comunidades indígenas y afrodescendientes.
+        </li>
+
+        <li>
+            📚 <strong>Educación y Cultura</strong> — Fomento de educación, cultura, deporte y
+            formación para el trabajo.
+        </li>
+
+        <li>
+            🌱 <strong>Agricultura Orgánica y Sostenible</strong> — Producción limpia, libre de
+            químicos y transgénicos.
+        </li>
+
+        <li>
+            🌾 <strong>Cría Ecológica</strong> — Semillas, cultivos, cría ecológica y aprovechamiento
+            integral de recursos y subproductos.
+        </li>
+
+        <li>
+            🌿 <strong>Cannabis con Responsabilidad Legal</strong> — Cultivo, transformación y
+            aprovechamiento conforme a la Ley 1787 de 2016, para fines medicinales, científicos,
+            industriales y agroecológicos.
+        </li>
+
+        <li>
+            🤝 <strong>Convenios y Alianzas</strong> — Trabajo conjunto con entidades públicas y
+            privadas, nacionales e internacionales, fundaciones y organizaciones afines.
+        </li>
+
+        <li>
+            🔗 <strong>Participación en Proyectos</strong> — Acciones que fortalecen el cumplimiento
+            de nuestra misión.
+        </li>
+    </ol>
+</section>
+  </p>         
         </div>
 
         <div class="cards-grid">
@@ -340,6 +430,7 @@
             </div>
         </div>
     </section>
+
     <section id="mision" class="container">
 <div class="contenedor-bloque">
                 <img src="imagen/gato1.jpg" alt="Gato en un entorno de refugio animal, con una expresión tranquila y atenta; no se aprecia texto en la imagen." class="bloque-imagen">
@@ -362,10 +453,47 @@
             </ul>
         </div>
     </section>
+    <div class="contenedor">
+    <h3>Objetivos Generales de la Fundación</h3>
+
+    <p>
+        La Fundación Mi Manada y Yo — Protección y Vida tiene como propósito integral la 
+        protección, rescate, bienestar y defensa de toda especie animal sin excepción; la 
+        promoción de la agricultura orgánica y sostenible; el estudio y aplicación del cannabis 
+        con fines medicinales y terapéuticos; y el apoyo a la persona humana sin ninguna 
+        discriminación, promoviendo la inclusión, la dignidad y el bienestar comunitario.
+    </p>
+
+    <h3>Fines Específicos</h3>
+
+    <p><strong>Protección Animal:</strong> Rescate, albergue, atención veterinaria, alimentación natural, 
+    defensa legal y educación en tenencia responsable; apoyo a otras fundaciones y refugios afines.</p>
+
+    <p><strong>Desarrollo Humano Inclusivo:</strong> Atención a poblaciones vulnerables como niñez, 
+    adulto mayor, comunidades étnicas, indígenas, afrodescendientes, desplazados y personas 
+    con discapacidad, sin distinción de raza, credo, género o condición social.</p>
+
+    <p><strong>Medio Ambiente y Agricultura Limpia:</strong> Prácticas agroecológicas, conservación de 
+    semillas nativas y protección de biodiversidad y recursos naturales.</p>
+
+    <p><strong>Uso Legal del Cannabis:</strong> Investigación, cultivo autorizado y aplicación de CBD y THC 
+    conforme a la Ley 1787 de 2016, con fines medicinales, terapéuticos, veterinarios e 
+    industriales.</p>
+
+    <p><strong>Alianzas y Transparencia:</strong> Convenios con entidades públicas y privadas, universidades 
+    y organizaciones nacionales e internacionales. Todo ingreso se reinvierte totalmente; está 
+    prohibida la distribución de utilidades a fundadores o directivos.</p>
+
+    <p>
+        Puedes consultar el documento oficial aquí:  
+        <a href="documentos/objetivos generales.pdf" target="_blank">📄 Descargar Objetivos Generales (PDF)</a>
+    </p>
+</div>
 
     <footer>
-        <p>&copy; 2026 <strong>Mi Manada y Yo</strong> </p>
-<a href="mailto:mimanadayyo@org">info@mimanadayyo.org</a>
+        <p>  <strong>Mi Manada y Yo - Protección y Vida</strong> </p>
+        <p>&copy;2026 - Todos los derechos reservados.</p>
+    </footer>        
            
                 
 </body>
